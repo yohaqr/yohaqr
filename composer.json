@@ -12,7 +12,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Test\\": "tests/"
         },
         "files": ["app/functions/app.php"]
     },
