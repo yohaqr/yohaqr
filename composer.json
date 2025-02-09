@@ -3,7 +3,7 @@
     "description": "This package is made to make qr generation easy",
     "type": "library",
     "version": "v0.0.1",
-    "minimum-stability": "alpha",
+    "minimum-stability": "stable",
     "require": {
         "endroid/qr-code": "^6.0"
     },
