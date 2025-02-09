@@ -3,6 +3,7 @@
 namespace App\Core;
 
 
+use App\Traits\EncodeQrWriter;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Encoding\Encoding;
@@ -24,6 +25,8 @@ use Endroid\QrCode\Writer\Result\ResultInterface;
  */
 class QrBuilder implements QrCodeBuilderInterface
 {
+    use EncodeQrWriter;
+
     /** @var string|null The QR code content (required) */
     protected ?string $data = null;
 
@@ -87,6 +90,19 @@ class QrBuilder implements QrCodeBuilderInterface
         $this->roundBlockSizeMode = RoundBlockSizeMode::Margin;
         $this->labelAlignment = LabelAlignment::Center;
     }
+
+
+    /**
+     * Choose Writer
+     * @return mixed
+     */
+    public function setWriter()
+    {
+        // $this->writer = $name;
+        return $this;
+    }
+
+
     /**
      * @inheritDoc
      */

@@ -2,6 +2,8 @@
     "name": "yoha/qr",
     "description": "This package is made to make qr generation easy",
     "type": "library",
+    "version": "v0.0.1",
+    "minimum-stability": "alpha",
     "require": {
         "endroid/qr-code": "^6.0"
     },
@@ -20,7 +22,9 @@
     "authors": [
         {
             "name": "Yohannes Zerihun",
-            "email": "johnpro3269@gmail.com"
+            "email": "johnpro3269@gmail.com",
+            "homepage": "http://yohacode.pro.et",
+            "role": "Developer"
         }
     ]
 }
