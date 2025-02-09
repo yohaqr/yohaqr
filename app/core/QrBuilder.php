@@ -229,8 +229,8 @@ class QrBuilder implements QrCodeBuilderInterface
         try {
             // Create a new Builder instance using named arguments.
             $builder = new Builder(
-                writer: $this->writer,
-                writerOptions: $this->writerOptions,
+                writer: $this->writer_type()['writer'],
+                writerOptions: $this->writer_type()['options'],
                 validateResult: $this->validateResult,
                 data: $this->data,
                 encoding: $this->encoding,

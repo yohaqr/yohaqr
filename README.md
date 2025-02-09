@@ -8,6 +8,8 @@ QR Easy is a PHP Composer package that provides a simple, fluent API for generat
 - **Logo Integration:** Add a custom logo (with optional resizing and background punchout).
 - **Labeling:** Optionally add a label with a custom font and alignment.
 
+## If you wanna to help or participate please let me know use the email down below
+
 ## Installation
 
 Install QR Easy via Composer:
@@ -18,6 +20,12 @@ composer require yohaqr/yohaqr
 
 > Make sure you have the latest version of PHP and Composer installed on your system.
 * PHP ^8.1
+
+# supported Types
+1. PNG
+2. PDF
+3. WEBP
+4. SVG
 
 ## Usage
 
