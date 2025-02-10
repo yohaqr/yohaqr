@@ -19,7 +19,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
+            "Yoha\\Qr\\": "app/",
             "Test\\": "tests/"
         },
         "files": ["app/functions/app.php"]

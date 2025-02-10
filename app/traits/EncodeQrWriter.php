@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace Yoha\Qr\Traits;
 
 use Endroid\QrCode\Writer\PdfWriter;
 use Endroid\QrCode\Writer\PngWriter;

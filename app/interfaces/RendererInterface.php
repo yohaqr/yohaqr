@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Interfaces;
+namespace Yoha\Qr\Interfaces;
 
 interface RendererInterface
 {

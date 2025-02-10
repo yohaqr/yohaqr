@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Yoha\Qr\Exceptions;
 
 use Exception;
 

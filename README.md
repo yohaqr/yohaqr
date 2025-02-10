@@ -9,8 +9,6 @@ If you like my work, please support me by visiting the [sponsor page](https://gi
 [![Monthly Downloads](http://img.shields.io/packagist/dm/yoha/qr.svg)](https://packagist.org/packages/yoha/qr)
 [![License](http://img.shields.io/packagist/l/yoha/qr.svg)](https://packagist.org/packages/yoha/qr)
 
-Your project description goes here.
-
 
 <img src="https://avatars.githubusercontent.com/u/198384864?s=200&v=4" alt="YohaQR" height="200" width="100%" />
 

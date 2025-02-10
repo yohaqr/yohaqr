@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Core;
+namespace Yoha\Qr\Core;
 
 
-use App\Traits\EncodeQrWriter;
+use Yoha\Qr\Traits\EncodeQrWriter;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Encoding\Encoding;
@@ -11,9 +11,9 @@ use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Label\Font\OpenSans;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\Label\LabelAlignment;
-use App\Exceptions\QrCodeBuilderException;
-use App\Interfaces\QrCodeBuilderInterface;
 use Endroid\QrCode\Label\Font\FontInterface;
+use Yoha\Qr\Exceptions\QrCodeBuilderException;
+use Yoha\Qr\Interfaces\QrCodeBuilderInterface;
 use Endroid\QrCode\Writer\Result\ResultInterface;
 
 
@@ -50,6 +50,8 @@ class QrBuilder implements QrCodeBuilderInterface
 
     /** @var int|null Optional logo width */
     protected ?int $logoResizeToWidth = null;
+    /** @var int|null Optional logo Height */
+    protected ?int $logoResizeToHeight = null;
 
     /** @var bool Whether to punch out the logo background (default: false) */
     protected bool $logoPunchoutBackground = false;
@@ -207,6 +209,15 @@ class QrBuilder implements QrCodeBuilderInterface
     /**
      * @inheritDoc
      */
+    public function setLogoResizeToHeight(?int $logoResizeToHeight): self
+    {
+        $this->logoResizeToHeight = $logoResizeToHeight;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function setLogoPunchoutBackground(bool $logoPunchoutBackground): self
     {
         $this->logoPunchoutBackground = $logoPunchoutBackground;
@@ -269,6 +280,7 @@ class QrBuilder implements QrCodeBuilderInterface
                 roundBlockSizeMode: $this->roundBlockSizeMode,
                 logoPath: $this->logoPath,
                 logoResizeToWidth: $this->logoResizeToWidth,
+                logoResizeToHeight: $this->logoResizeToHeight,
                 logoPunchoutBackground: $this->logoPunchoutBackground,
                 labelText: $this->labelText,
                 labelFont: $this->labelFont,
@@ -284,6 +296,24 @@ class QrBuilder implements QrCodeBuilderInterface
                 $e
             );
         }
+    }
+
+
+    /**
+     * 
+     */
+    public function getUri(
+        string $writerType = 'png',
+        string $data = 'Qr Test Data by YohaQr.',
+        string $lable = 'Scan Me. Centered.'
+    )
+    {
+        $this->setWriterType($writerType);
+        $this->setData($data);
+        $this->setLabelText($lable);
+
+        $result = $this->generate();
+        return $result->getDataUri();
     }
 
 
