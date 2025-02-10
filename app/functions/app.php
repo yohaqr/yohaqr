@@ -27,3 +27,5 @@ if (!function_exists("_qr"))
         return $result;
     }
 }
+
+// 
