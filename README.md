@@ -34,10 +34,21 @@ composer require yoha/qr
 * PHP ^8.1
 
 # supported Types
-1. PNG
+1. PNG ( Default)
 2. PDF
 3. WEBP
 4. SVG
+5. Coming soon
+
+#To change writer type 
+```
+<?php 
+    $QrBuilder = QrBuilder();
+    $QrBuilder->setWriterType(), // default png pass value to change
+    ->setdata('http://yohacodes.pro.et')
+    ->generate();
+?>
+```
 
 ## Usage
 
@@ -45,7 +56,9 @@ QR Easy wraps the latest Endroid QR Code Builder with a fluent interface. Below 
 
 
 
+
 ```php
+Example 1
 <?php
 
 use Yoha\Qr\Core\QrBuilder;
@@ -58,13 +71,22 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $QrBuilder = new QrBuilder();
 
-$result = $QrBuilder->getUri(data: 'Test QR I can change this data to change qr');
+$result = $QrBuilder->getUri();
 
+?>
+
+<img src="data:image/png?<?= $result ?>" />
 
 ```
 
 ```
-I am working on examples!
+Example 2: Using QrBuilder ( Powerfull )
+<?php
+
+
+
+
+?>
 ```
 
 ### Logo Feature
