@@ -1,6 +1,29 @@
 <?php
 
+use App\Core\QrBuilder;
 
-function array_find_key(array $array, mixed $searchValue): string|int|false {
-    return array_search($searchValue, $array, true);
+
+/**
+ * @uses QrBuilder Name
+ */
+if (!function_exists("_qr")) 
+{
+    function _qr(
+        string $data,
+        string $writerType = 'png',
+        string $logoPath = '',
+        string $label = 'Test'
+    )
+    {
+        $qrCode = new QrBuilder();
+
+        $result = $qrCode
+            ->setWriterType($writerType)
+            ->setData($data)
+            ->setLogoPath($logoPath)
+            ->setLabelText($label)
+            ->generate();
+
+        return $result;
+    }
 }

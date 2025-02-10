@@ -1,7 +1,7 @@
 # YohaQR
 *By [yohaqr](https://github.com/yohaqr)*
 
-If you like my work, please support me by visiting the [sponsor page](https://github.com/sponsors/yohaqr) or [buying me a coffee](https://www.buymeacoffee.com/yohaqr) :coffee:
+If you like my work, please support me by visiting the [sponsor page](https://github.com/sponsors/yohacodes) or [buying me a coffee](https://www.buymeacoffee.com/yohacodes) :coffee:
 
 [![Latest Stable Version](http://img.shields.io/packagist/v/yoha/qr.svg)](https://packagist.org/packages/yoha/qr)
 [![Build Status](https://github.com/yohaqr/yohaqr/actions/workflows/php.yml/badge.svg)](https://github.com/yohaqr/yohaqr/actions/workflows/php.yml)
