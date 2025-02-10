@@ -1,6 +1,3 @@
-Below is an enhanced, advanced, and descriptive README example for YohaQR. This version includes detailed explanations, advanced examples, and clear usage instructions.
-
-
 # YohaQR
 *By [yohaqr](https://github.com/yohaqr)*
 
@@ -193,7 +190,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 Your contributions and support help make YohaQR even better. Happy coding!
 ```
-
----
-
-You can copy and paste the above Markdown into your project's README file to provide users with a clear, advanced, and comprehensive guide on how to use YohaQR. Enjoy building your QR code solutions!
