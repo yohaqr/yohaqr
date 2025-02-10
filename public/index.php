@@ -1,7 +1,6 @@
 <?php
 
 use Yoha\Qr\Core\QrBuilder;
-use Yoha\Qr\Core\FileReader;
 use Yoha\Qr\Bootstrap\ErrorHandler;
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -79,6 +78,8 @@ $tss = $ts->setMargin(2)
         //     echo 'Unsupported file type.';
         // }
     ?>
+    <h1> this is just tet page. </h1>
+
 
 </body>
 </html>

@@ -176,6 +176,7 @@ $result = $qrBuilder->setData('https://example.com')
                     ->generate();
 
 echo '<img src="' . $result->getDataUri() . '" alt="QR Code with Logo">';
+
 ```
 
 ## Contributing
@@ -186,7 +187,7 @@ Contributions are welcome! If you find any bugs or have suggestions for improvem
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+# Contribution
 ---
-
 Your contributions and support help make YohaQR even better. Happy coding!
-```
+---
