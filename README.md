@@ -1,24 +1,3 @@
-# Project Name
-
-![Test Status](https://img.shields.io/github/actions/workflow/status/yohaqr/yohaqr/test.yml?label=tests)
-
-![Packagist Downloads](https://img.shields.io/packagist/dt/yohaqr/yohaqr.svg)
-![Visitors](https://visitor-badge.glitch.me/badge?page_id=yohatechtop.yohaqr)
-![Coverage](https://coveralls.io/repos/github/yohaqr/yohaqr/badge.svg)
-![License](https://img.shields.io/github/license/yohaqr/yohaqr)
-![Version](https://img.shields.io/github/v/release/yohaqr/yohaqr)
-
-
-
-
-## Installation
-
-Steps for installation:
-
-```bash
-composer install
-```
-
 # YohaQR
 
 <img src="https://avatars.githubusercontent.com/u/198384864?s=200&v=4" alt="YohaQR" height="200" width="100%" />
