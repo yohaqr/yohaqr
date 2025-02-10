@@ -20,16 +20,16 @@ new ErrorHandler();
 $ts = new QrBuilder();
 
 $tss = $ts->setMargin(2)
-    ->setWriterType('svg')
+    ->setWriterType('png')
     ->setData('Testing SaveFile')
     ->saveToFile(name: 'testing_pdf', path: __DIR__.'/../storage/files/');
     
 // $fileMG = new FileReader();
 
 
-// $result = $tss->getDataUri();
+$result = $tss->getDataUri();
 
-// dd($result);
+dd($result);
 // Directly output the QR code
 // header('Content-Type: '.$result->getMimeType());
 // $r = $result->getString();

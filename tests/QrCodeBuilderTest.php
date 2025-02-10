@@ -2,14 +2,16 @@
 
 namespace Tests;
 
-use App\Core\QrBuilder;
+
+use Yoha\Qr\Core\QrBuilder;
 use PHPUnit\Framework\TestCase;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Label\Font\OpenSans;
 use Endroid\QrCode\ErrorCorrectionLevel;
+
 use Endroid\QrCode\Label\LabelAlignment;
-use App\Exceptions\QrCodeBuilderException;
+use Yoha\Qr\Exceptions\QrCodeBuilderException;
 use Endroid\QrCode\Writer\Result\ResultInterface;
 
 /**

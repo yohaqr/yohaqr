@@ -386,47 +386,47 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
     /**
      * 
      */
-    public function readPng()
-    {
-        /** */
-        $result = $this->generate();
-        // Assume $result contains the base64-encoded data
-        $mimeType = $result->getMimeType(); // Example: Fetch MIME type dynamically
+    // public function readPng()
+    // {
+    //     /** */
+    //     $result = $this->generate();
+    //     // Assume $result contains the base64-encoded data
+    //     $mimeType = $result->getMimeType(); // Example: Fetch MIME type dynamically
 
-        $src = $result->getDataUri();
-        // Extract the file type from MIME type (e.g., 'image/png' -> 'png')
-        $fileType = explode('/', $mimeType)[1] ?? '';
+    //     $src = $result->getDataUri();
+    //     // Extract the file type from MIME type (e.g., 'image/png' -> 'png')
+    //     $fileType = explode('/', $mimeType)[1] ?? '';
         
-        return '<img src="data:' . $mimeType . ';' . $src . '" alt="Base64 Image">';
+    //     return '<img src="data:' . $mimeType . ';' . $src . '" alt="Base64 Image">';
 
-    }
-
-
-    /**
-     * 
-     */
-    public function readWebp()
-    {
-
-    }
+    // }
 
 
-    /**
-     * 
-     */
-    public function readSvg()
-    {
+    // /**
+    //  * 
+    //  */
+    // public function readWebp()
+    // {
 
-    }
+    // }
 
 
-    /**
-     * 
-     */
-    public function readPdf()
-    {
+    // /**
+    //  * 
+    //  */
+    // public function readSvg()
+    // {
 
-    }
+    // }
+
+
+    // /**
+    //  * 
+    //  */
+    // public function readPdf()
+    // {
+
+    // }
 
 
 
