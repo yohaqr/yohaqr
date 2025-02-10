@@ -83,8 +83,18 @@ $result = $QrBuilder->getUri();
 Example 2: Using QrBuilder ( Powerfull )
 <?php
 
+use Yoha\Qr\QrBuilder;
 
+$QrBuilder  = new QrBilder();
 
+$result = $QrBuilder->setWritertype()
+                    ->setData('data') // data
+                    ->setLogoPath($path) // Path for logo
+                    ->setLogoResizeToWidth(int $value)
+                    ->setLogoResizeToHight(same)
+                    ->generate();
+
+$uri = $result->getdataUri();
 
 ?>
 ```
@@ -93,17 +103,7 @@ Example 2: Using QrBuilder ( Powerfull )
 
 When using the logo feature, simply provide a valid file path via the `setLogoPath()` method. Optionally, you can resize the logo using `setLogoResizeToWidth()` and remove the background behind the logo with `setLogoPunchoutBackground()`.
 
-## Running Tests
 
-QR Easy uses PHPUnit for unit testing. To run the tests, install PHPUnit (if you haven’t already) and execute:
-
-```bash
-you need to install phpunit test to try this but I am preparing cli 
-```
-
-```
-./vendor/bin/phpunit --bootstrap vendor/autoload.php tests
-```
 
 ## Contributing
 
