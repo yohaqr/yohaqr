@@ -64,13 +64,18 @@ class QrBuilder implements QrCodeBuilderInterface
     protected ?LabelAlignment $labelAlignment = null;
 
     /** @var PngWriter The writer instance (default: new PngWriter()) */
-    protected ?array $writer;
+    protected  $writer;
 
     /** @var array Default writer options (empty by default) */
     protected array $writerOptions = [];
 
     /** @var bool Whether to validate the result (default: false) */
     protected bool $validateResult = false;
+
+    /**
+     * @var 
+     */
+    public ?string $writertype = '';
 
     /**
      * QrCodeBuilder constructor.
@@ -88,17 +93,41 @@ class QrBuilder implements QrCodeBuilderInterface
         $this->errorCorrectionLevel = ErrorCorrectionLevel::High;
         $this->roundBlockSizeMode = RoundBlockSizeMode::Margin;
         $this->labelAlignment = LabelAlignment::Center;
-        $this->setWriter();
+        $this->setWriterType('svg');
+
+        // dd($this->setWriter());
     }
 
+    public function setWriterType($type = 'png')
+    {
+        $this->writertype = $type;
+        $this->setWriter();
+        $this->setWriterOption();
+        return $this;
+    }
 
     /**
      * Choose Writer
      * @return mixed
      */
-    public function setWriter($type = 'png')
+    public function setWriter()
     {
-        $this->writer = $this->writer_type($type);
+        // dd($this->writer_type($this->writertype)['writer']);
+        $this->writer = $this->writer_type($this->writertype)['writer'];
+        return $this;
+    }
+
+    private function setWriterOption()
+    {
+        $wo = match($this->writertype) 
+        {
+            'png' => $this->writer_type($this->writertype)['options'],
+            'svg'  => $this->writer_type($this->writertype)['options'],
+            'webp' => $this->writer_type($this->writertype)['options'],
+            'pdf'  => $this->writer_type($this->writertype)['options'],
+        };
+
+        $this->writerOptions = $wo;
         return $this;
     }
 
@@ -106,7 +135,7 @@ class QrBuilder implements QrCodeBuilderInterface
     /**
      * @inheritDoc
      */
-    public function setData(string $data): self
+    public function setData(string $data = "test QR"): self
     {
         $this->data = $data;
         return $this;
@@ -229,8 +258,8 @@ class QrBuilder implements QrCodeBuilderInterface
         try {
             // Create a new Builder instance using named arguments.
             $builder = new Builder(
-                writer: $this->setWriter()['writer'],
-                writerOptions: $this->setWriter()['options'],
+                writer: $this->writer,
+                writerOptions: $this->writerOptions,
                 validateResult: $this->validateResult,
                 data: $this->data,
                 encoding: $this->encoding,
@@ -261,7 +290,5 @@ class QrBuilder implements QrCodeBuilderInterface
 }
 
 
-$ts = new QrBuilder();
 
-dd($ts);
 

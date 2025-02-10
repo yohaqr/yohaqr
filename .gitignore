@@ -1,5 +1,8 @@
 /README/
 /vendor/
+/storage/
+/public/
+/app/
 
 .gitignore
 
