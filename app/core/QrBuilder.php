@@ -3,6 +3,9 @@
 namespace Yoha\Qr\Core;
 
 
+use Exception;
+use RuntimeException;
+use InvalidArgumentException;
 use Yoha\Qr\Traits\EncodeQrWriter;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Writer\PngWriter;
@@ -298,23 +301,85 @@ class QrBuilder implements QrCodeBuilderInterface
         }
     }
 
-
     /**
-     * 
+     * Generates a QR code and returns its data URI.
+     *
+     * @param string $writerType The format of the QR code (e.g., 'png', 'svg').
+     * @param string $data The data to encode in the QR code.
+     * @param string $label The label text displayed below the QR code.
+     * @return string The generated QR code as a data URI.
+     * @throws InvalidArgumentException If any parameter is invalid.
      */
     public function getUri(
         string $writerType = 'png',
         string $data = 'Qr Test Data by YohaQr.',
-        string $lable = 'Scan Me. Centered.'
-    )
-    {
+        string $label = 'Scan Me. Centered.'
+    ) {
+        // Validate writer type
+        $validWriterTypes = ['png', 'svg', 'jpg', 'gif'];
+        if (!in_array(strtolower($writerType), $validWriterTypes, true)) {
+            throw new InvalidArgumentException("Invalid writer type: $writerType. Allowed: " . implode(', ', $validWriterTypes));
+        }
+
+        // Validate data length
+        if (empty(trim($data))) {
+            throw new InvalidArgumentException("QR code data cannot be empty.");
+        }
+
+        // Validate label length (optional)
+        if (strlen($label) > 100) {
+            throw new InvalidArgumentException("Label text should not exceed 100 characters.");
+        }
+
+        // Set the QR code properties
         $this->setWriterType($writerType);
         $this->setData($data);
-        $this->setLabelText($lable);
+        $this->setLabelText($label);
 
+        // Generate and return the QR code as a data URI
         $result = $this->generate();
         return $result->getDataUri();
     }
+
+    /**
+     * Saves the generated QR code to a file.
+     *
+     * @param string $name The name of the file (without extension).
+     * @param string $path The directory path where the file should be saved.
+     * @return mixed The generated QR code result object.
+     * @throws InvalidArgumentException If parameters are invalid.
+     * @throws RuntimeException If saving the file fails.
+     */
+    public function saveToFile(
+        string $name = 'test',
+        string $path = ''
+    ) {
+        // Validate filename
+        if (!preg_match('/^[a-zA-Z0-9_-]+$/', $name)) {
+            throw new InvalidArgumentException("Invalid filename: $name. Use only letters, numbers, hyphens, or underscores.");
+        }
+
+        // Ensure the path ends with a directory separator if provided
+        if (!empty($path) && !is_dir($path)) {
+            throw new InvalidArgumentException("Invalid path: $path. Directory does not exist.");
+        }
+
+        // Construct the absolute file path
+        $ab_path = rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $name . '.' . $this->writertype;
+
+        // Generate QR code
+        $result = $this->generate();
+
+        // Attempt to save the file
+        try {
+            $result->saveToFile($ab_path);
+        } catch (Exception $e) {
+            throw new RuntimeException("Failed to save QR code to file: " . $e->getMessage());
+        }
+
+        return $result;
+    }
+
 
 
 }

@@ -57,8 +57,10 @@ QR Easy wraps the latest Endroid QR Code Builder with a fluent interface. Below 
 
 
 
+
+
+# Example 1
 ```php
-Example 1
 <?php
 
 use Yoha\Qr\Core\QrBuilder;
@@ -79,8 +81,8 @@ $result = $QrBuilder->getUri();
 
 ```
 
+# Example 2: Using QrBuilder ( Powerfull )
 ```
-Example 2: Using QrBuilder ( Powerfull )
 <?php
 
 use Yoha\Qr\QrBuilder;
@@ -97,6 +99,25 @@ $result = $QrBuilder->setWritertype()
 $uri = $result->getdataUri();
 
 ?>
+```
+
+# Example 3
+```
+<?php
+
+    $ts = new QrBuilder();
+
+    $tss = $ts->setMargin(2)
+        ->setWriterType('pdf')
+        ->setData('Testing SaveFile')
+        ->saveToFile(name: 'testing_pdf', path: __DIR__.'/../storage/files/');
+
+
+    $result = $tss->getDataUri();
+
+?>
+
+
 ```
 
 ### Logo Feature
