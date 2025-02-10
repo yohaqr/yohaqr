@@ -82,7 +82,7 @@ $result = $QrBuilder->getUri();
 ```
 
 # Example 2: Using QrBuilder ( Powerfull )
-```
+```php
 <?php
 
 use Yoha\Qr\QrBuilder;
@@ -102,7 +102,7 @@ $uri = $result->getdataUri();
 ```
 
 # Example 3
-```
+```php
 <?php
 
     $ts = new QrBuilder();
