@@ -1,6 +1,6 @@
 # YohaQR
 
-<img src="https://avatars.githubusercontent.com/u/198384864?s=200&v=4" alt="YohaQR" />
+<img src="https://avatars.githubusercontent.com/u/198384864?s=200&v=4" alt="YohaQR" height="200" width="100%" />
 
 QR Easy is a PHP Composer package that provides a simple, fluent API for generating QR codes using the latest [Endroid QR Code](https://github.com/endroid/qr-code) library. With QR Easy you can easily customize your QR codes with features such as:
 
