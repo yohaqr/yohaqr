@@ -4,7 +4,7 @@
 If you like my work, please support me by visiting the [sponsor page](https://github.com/sponsors/yohaqr) or [buying me a coffee](https://www.buymeacoffee.com/yohaqr) :coffee:
 
 [![Latest Stable Version](http://img.shields.io/packagist/v/yoha/qr.svg)](https://packagist.org/packages/yoha/qr)
-[![Build Status](https://github.com/yohaqr/yohaqr/workflows/CI/badge.svg)](https://github.com/yohaqr/yohaqr/actions)
+[![Build Status](https://github.com/yohaqr/yohaqr/actions/workflows/ci.yml/badge.svg)](https://github.com/yohaqr/yohaqr/actions/workflows/ci.yml)
 [![Total Downloads](http://img.shields.io/packagist/dt/yoha/qr.svg)](https://packagist.org/packages/yoha/qr)
 [![Monthly Downloads](http://img.shields.io/packagist/dm/yoha/qr.svg)](https://packagist.org/packages/yoha/qr)
 [![License](http://img.shields.io/packagist/l/yoha/qr.svg)](https://packagist.org/packages/yoha/qr)
