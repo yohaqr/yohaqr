@@ -5,6 +5,7 @@ namespace Yoha\Qr\Core;
 
 use Exception;
 use RuntimeException;
+use Yoha\Qr\Core\FileReader;
 use InvalidArgumentException;
 use Yoha\Qr\Traits\EncodeQrWriter;
 use Endroid\QrCode\Builder\Builder;
@@ -26,10 +27,9 @@ use Endroid\QrCode\Writer\Result\ResultInterface;
  * A fluent builder that wraps Endroid's latest QR code Builder (using named arguments)
  * and provides optional and required configuration with default values.
  */
-class QrBuilder implements QrCodeBuilderInterface
+class QrBuilder extends FileReader implements QrCodeBuilderInterface
 {
     use EncodeQrWriter;
-
     /** @var string|null The QR code content (required) */
     protected ?string $data = null;
 
@@ -378,6 +378,54 @@ class QrBuilder implements QrCodeBuilderInterface
         }
 
         return $result;
+    }
+
+
+    // Getting in supported file Types 
+
+    /**
+     * 
+     */
+    public function readPng()
+    {
+        /** */
+        $result = $this->generate();
+        // Assume $result contains the base64-encoded data
+        $mimeType = $result->getMimeType(); // Example: Fetch MIME type dynamically
+
+        $src = $result->getDataUri();
+        // Extract the file type from MIME type (e.g., 'image/png' -> 'png')
+        $fileType = explode('/', $mimeType)[1] ?? '';
+        
+        return '<img src="data:' . $mimeType . ';' . $src . '" alt="Base64 Image">';
+
+    }
+
+
+    /**
+     * 
+     */
+    public function readWebp()
+    {
+
+    }
+
+
+    /**
+     * 
+     */
+    public function readSvg()
+    {
+
+    }
+
+
+    /**
+     * 
+     */
+    public function readPdf()
+    {
+
     }
 
 

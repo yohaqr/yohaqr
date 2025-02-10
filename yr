@@ -3,9 +3,9 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use App\Console\Commands\RunTests;
+use Yoha\Qr\Console\Commands\RunTests;
 use Symfony\Component\Console\Application;
-use App\Console\Commands\GenerateQrCodeCommand;
+use Yoha\Qr\Console\Commands\GenerateQrCodeCommand;
 
 
 $application = new Application('QR Code CLI', '1.0.0');

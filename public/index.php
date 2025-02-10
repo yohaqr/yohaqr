@@ -1,6 +1,7 @@
 <?php
 
 use Yoha\Qr\Core\QrBuilder;
+use Yoha\Qr\Core\FileReader;
 use Yoha\Qr\Bootstrap\ErrorHandler;
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -20,14 +21,16 @@ new ErrorHandler();
 $ts = new QrBuilder();
 
 $tss = $ts->setMargin(2)
-    ->setWriterType('pdf')
+    ->setWriterType('svg')
     ->setData('Testing SaveFile')
     ->saveToFile(name: 'testing_pdf', path: __DIR__.'/../storage/files/');
+    
+// $fileMG = new FileReader();
 
 
-$result = $tss->getDataUri();
+// $result = $tss->getDataUri();
 
-dd($result);
+// dd($result);
 // Directly output the QR code
 // header('Content-Type: '.$result->getMimeType());
 // $r = $result->getString();
@@ -43,6 +46,8 @@ dd($result);
 
 // echo $dataUri;
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -55,18 +60,25 @@ dd($result);
 <body>
     <h1>Displaying an Image using data URI</h1>
     <?php
-        // Assume $result contains the base64-encoded data
-        $fileType = 'png'; // Example: Change dynamically based on your needs
 
-        if (in_array($fileType, ['png', 'jpg', 'jpeg', 'webp'])) {
-            echo '<img src="data:image/' . $fileType . ';base64,' . $result . '" alt="Base64 Image">';
-        } elseif ($fileType === 'svg') {
-            echo '<object type="image/svg+xml" data="data:image/svg+xml;base64,' . $result . '" width="300" height="300"></object>';
-        } elseif ($fileType === 'pdf') {
-            echo '<embed src="data:application/pdf;base64,' . $result . '" type="application/pdf" width="600" height="800">';
-        } else {
-            echo 'Unsupported file type.';
-        }
+        echo($ts->readFile($tss));
+
+        // // Assume $result contains the base64-encoded data
+        // $mimeType = $tss->getMimeType(); // Example: Fetch MIME type dynamically
+
+        // // Extract the file type from MIME type (e.g., 'image/png' -> 'png')
+        // $fileType = explode('/', $mimeType)[1] ?? '';
+
+        // if (in_array($fileType, ['png', 'jpg', 'jpeg', 'webp'])) {
+        //     echo '<img src="data:' . $mimeType . ';' . $result . '" alt="Base64 Image">';
+        // } elseif ($fileType === 'svg+xml') { // SVG MIME type is 'image/svg+xml'
+        //     echo '<object type="image/svg+xml" data="data:image/svg+xml;' . $result . '" width="300" height="300"></object>';
+        // } elseif ($fileType === 'pdf') {
+        //     echo '<embed src="data:application/pdf;' . $result . '" type="application/pdf" width="600" height="800">';
+        // } else {
+        //     echo 'Unsupported file type.';
+        // }
     ?>
+
 </body>
 </html>
