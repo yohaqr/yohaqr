@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use App\Console\Commands\RunTests;
+use Symfony\Component\Console\Application;
+use App\Console\Commands\GenerateQrCodeCommand;
+
+
+$application = new Application('QR Code CLI', '1.0.0');
+
+// Register commands
+$application->add(new GenerateQrCodeCommand());
+$application->add(new RunTests());
+
+// Run the application
+$application->run();

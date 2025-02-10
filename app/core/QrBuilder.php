@@ -64,7 +64,7 @@ class QrBuilder implements QrCodeBuilderInterface
     protected ?LabelAlignment $labelAlignment = null;
 
     /** @var PngWriter The writer instance (default: new PngWriter()) */
-    protected PngWriter $writer;
+    protected ?array $writer;
 
     /** @var array Default writer options (empty by default) */
     protected array $writerOptions = [];
@@ -82,13 +82,13 @@ class QrBuilder implements QrCodeBuilderInterface
         // Default Encoder
         $this->encoding = new Encoding('UTF-8');
         // Default Writer (PNG)
-        $this->writer = new PngWriter();
         // defailt font
         $this->labelFont = new OpenSans(20);
         // Default error correction level set to High; adjust if needed.
         $this->errorCorrectionLevel = ErrorCorrectionLevel::High;
         $this->roundBlockSizeMode = RoundBlockSizeMode::Margin;
         $this->labelAlignment = LabelAlignment::Center;
+        $this->setWriter();
     }
 
 
@@ -96,9 +96,9 @@ class QrBuilder implements QrCodeBuilderInterface
      * Choose Writer
      * @return mixed
      */
-    public function setWriter()
+    public function setWriter($type = 'png')
     {
-        // $this->writer = $name;
+        $this->writer = $this->writer_type();
         return $this;
     }
 
@@ -229,8 +229,8 @@ class QrBuilder implements QrCodeBuilderInterface
         try {
             // Create a new Builder instance using named arguments.
             $builder = new Builder(
-                writer: $this->writer_type()['writer'],
-                writerOptions: $this->writer_type()['options'],
+                writer: $this->setWriter()['writer'],
+                writerOptions: $this->setWriter()['options'],
                 validateResult: $this->validateResult,
                 data: $this->data,
                 encoding: $this->encoding,
