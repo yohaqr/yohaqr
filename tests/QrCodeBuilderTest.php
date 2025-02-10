@@ -35,13 +35,13 @@ class QrCodeBuilderTest extends TestCase
             ->setWriterType()
             ->setData('Test QR Code')
             ->setEncoding()
-            // ->setErrorCorrectionLevel(ErrorCorrectionLevel::High)
-            // ->setSize(300)
-            // ->setMargin(10)
-            // ->setRoundBlockSizeMode(RoundBlockSizeMode::Margin)
-            // ->setLabelText('Test Label')
-            // ->setLabelFont()
-            // ->setLabelAlignment(LabelAlignment::Center)
+            ->setErrorCorrectionLevel(ErrorCorrectionLevel::High)
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(RoundBlockSizeMode::Margin)
+            ->setLabelText('Test Label')
+            ->setLabelFont()
+            ->setLabelAlignment(LabelAlignment::Center)
             ->generate();
 
         // Assert that the result is an instance of Endroid's ResultInterface.

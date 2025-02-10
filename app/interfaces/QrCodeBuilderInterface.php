@@ -33,7 +33,7 @@ interface QrCodeBuilderInterface
     * @return self
     */
 
-    public function setEncoding( Encoding $encoding ): self;
+    public function setEncoding( $encoding ): self;
 
     /**
     * Set the error correction level.
