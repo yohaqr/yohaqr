@@ -17,7 +17,7 @@ Steps for installation:
 
 ```bash
 composer install
-
+```
 
 # YohaQR
 
