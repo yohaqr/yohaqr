@@ -34,7 +34,7 @@ class QrCodeBuilderTest extends TestCase
         $result = $qrBuilder
             ->setWriterType()
             ->setData('Test QR Code')
-            // ->setEncoding(new Encoding('UTF-8'))
+            ->setEncoding()
             // ->setErrorCorrectionLevel(ErrorCorrectionLevel::High)
             // ->setSize(300)
             // ->setMargin(10)

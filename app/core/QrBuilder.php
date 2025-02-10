@@ -144,9 +144,9 @@ class QrBuilder implements QrCodeBuilderInterface
     /**
      * @inheritDoc
      */
-    public function setEncoding(Encoding $encoding): self
+    public function setEncoding($encoding = 'UTF-8'): self
     {
-        $this->encoding = $encoding;
+        $this->encoding = new Encoding($encoding);
         return $this;
     }
 
