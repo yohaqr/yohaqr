@@ -94,3 +94,4 @@ trait EncodeQrWriter
     }
 
 }
+

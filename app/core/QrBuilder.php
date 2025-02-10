@@ -98,7 +98,7 @@ class QrBuilder implements QrCodeBuilderInterface
      */
     public function setWriter($type = 'png')
     {
-        $this->writer = $this->writer_type();
+        $this->writer = $this->writer_type($type);
         return $this;
     }
 
@@ -259,3 +259,9 @@ class QrBuilder implements QrCodeBuilderInterface
 
 
 }
+
+
+$ts = new QrBuilder();
+
+dd($ts);
+
