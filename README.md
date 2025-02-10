@@ -73,6 +73,9 @@ use Yoha\Qr\Core\QrBuilder;
 require __DIR__ . '/../vendor/autoload.php';
 
 $qrBuilder = new QrBuilder();
+$build     = $qrBuilder
+             ->setdata('data')
+             ->generate();
 
 // Generate the QR code and obtain the Data URI
 $result = $qrBuilder->getUri();
