@@ -17,7 +17,7 @@ QR Easy is a PHP Composer package that provides a simple, fluent API for generat
 Install QR Easy via Composer:
 
 ```bash
-composer require yohaqr/yohaqr
+composer require yoha/qr
 ```
 
 > Make sure you have the latest version of PHP and Composer installed on your system.
@@ -33,8 +33,14 @@ composer require yohaqr/yohaqr
 
 QR Easy wraps the latest Endroid QR Code Builder with a fluent interface. Below is a basic example demonstrating how to generate a QR code with a custom logo and label.
 
+
+
 ```php
 ``` don't for get to include autoloader ```
+```
+
+```
+I am working on examples!
 ```
 
 ### Logo Feature
@@ -46,6 +52,10 @@ When using the logo feature, simply provide a valid file path via the `setLogoPa
 QR Easy uses PHPUnit for unit testing. To run the tests, install PHPUnit (if you haven’t already) and execute:
 
 ```bash
+you need to install phpunit test to try this but I am preparing cli 
+```
+
+```
 ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests
 ```
 
