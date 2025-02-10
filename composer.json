@@ -3,6 +3,9 @@
     "description": "This package is made to make qr generation easy",
     "type": "library",
     "minimum-stability": "stable",
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "require": {
         "endroid/qr-code": "^6.0",
         "symfony/console": "^7.2",
