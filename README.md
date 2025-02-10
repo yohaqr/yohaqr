@@ -46,7 +46,21 @@ QR Easy wraps the latest Endroid QR Code Builder with a fluent interface. Below 
 
 
 ```php
-``` don't for get to include autoloader ```
+<?php
+
+use Yoha\Qr\Core\QrBuilder;
+
+// include autoloader if your using this package on custom PHP
+require __DIR__ . '/../vendor/autoload.php';
+
+
+
+
+$QrBuilder = new QrBuilder();
+
+$result = $QrBuilder->getUri(data: 'Test QR I can change this data to change qr');
+
+
 ```
 
 ```
