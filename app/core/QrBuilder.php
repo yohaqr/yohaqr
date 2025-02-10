@@ -216,7 +216,7 @@ class QrBuilder implements QrCodeBuilderInterface
     /**
      * @inheritDoc
      */
-    public function setLabelText(?string $labelText): self
+    public function setLabelText(?string $labelText = ''): self
     {
         $this->labelText = $labelText;
         return $this;
@@ -225,7 +225,7 @@ class QrBuilder implements QrCodeBuilderInterface
     /**
      * @inheritDoc
      */
-    public function setLabelFont(?FontInterface $labelFont): self
+    public function setLabelFont($labelFont): self
     {
         $this->labelFont = $labelFont;
         return $this;

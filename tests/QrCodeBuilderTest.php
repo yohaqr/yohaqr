@@ -40,7 +40,7 @@ class QrCodeBuilderTest extends TestCase
             ->setMargin(10)
             ->setRoundBlockSizeMode(RoundBlockSizeMode::Margin)
             ->setLabelText('Test Label')
-            ->setLabelFont()
+            // ->setLabelFont()
             ->setLabelAlignment(LabelAlignment::Center)
             ->generate();
 

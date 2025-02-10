@@ -114,7 +114,7 @@ interface QrCodeBuilderInterface
     * @return self
     */
 
-    public function setLabelFont( ?FontInterface $labelFont ): self;
+    public function setLabelFont( $labelFont ): self;
 
     /**
     * Optionally set the label alignment.
