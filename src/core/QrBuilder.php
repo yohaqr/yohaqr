@@ -124,12 +124,12 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
 
         // Ensure the 'writer' key exists.
         if (!isset($writerData['writer'])) {
-            throw new \RuntimeException("Invalid writer data returned for writer type '{$this->writertype}'.");
+            throw new RuntimeException("Invalid writer data returned for writer type '{$this->writertype}'.");
         }
 
         // Ensure that the returned writer is an instance of WriterInterface.
-        if (!$writerData['writer'] instanceof \Endroid\QrCode\Writer\WriterInterface) {
-            throw new \RuntimeException("Returned writer is not an instance of WriterInterface.");
+        if (!$writerData['writer'] instanceof WriterInterface) {
+            throw new RuntimeException("Returned writer is not an instance of WriterInterface.");
         }
 
         // Now safely assign.
@@ -151,14 +151,14 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
 
         // Ensure the 'options' key exists and is an array.
         if (!isset($writerData['options']) || !is_array($writerData['options'])) {
-            throw new \RuntimeException("Invalid writer options returned for writer type '{$this->writertype}'.");
+            throw new RuntimeException("Invalid writer options returned for writer type '{$this->writertype}'.");
         }
 
         // Prepare a new array ensuring keys are strings.
         $options = [];
         foreach ($writerData['options'] as $key => $value) {
             if (!is_string($key)) {
-                throw new \RuntimeException("Writer options keys must be strings.");
+                throw new RuntimeException("Writer options keys must be strings.");
             }
             $options[$key] = $value;
         }
