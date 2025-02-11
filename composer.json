@@ -5,7 +5,7 @@
     "minimum-stability": "stable",
     "scripts": {
         "test": "phpunit --bootstrap vendor/autoload.php tests",
-        "lint": "phpstan analyse app --level=max"
+        "lint": "phpstan analyse src --level=max"
     },
     "require": {
         "endroid/qr-code": "^6.0",
