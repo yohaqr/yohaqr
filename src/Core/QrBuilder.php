@@ -84,7 +84,9 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
     /** @var string Writer type; we require a non-null string */
     protected string $writertype = '';
 
-    public function __construct()
+    public function __construct(
+        public string $getData = ''
+    )
     {
         // Default Encoder
         $this->encoding = new Encoding('UTF-8');
@@ -183,7 +185,15 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
 
     public function setData(string $data = "test QR"): self
     {
-        $this->data = $data;
+        if (empty($this->getData)) 
+        {
+            $this->data = $this->getData;
+            $this->generate();
+        }
+        else {
+
+            $this->data = $data;
+        }
         return $this;
     }
 
