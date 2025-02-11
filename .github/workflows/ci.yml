@@ -7,6 +7,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: php-actions/composer@v6 # or alternative dependency management
-    - uses: php-actions/phpunit@v3
+      - uses: actions/checkout@v3
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: gd
+          
+      - name: Set safe directory
+        run: git config --global --add safe.directory /app
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Dump autoload
+        run: composer dump-autoload -o
+
+      - name: List src directory
+        run: ls -R src
+
+      - name: List all files and directories
+        run: ls -R
+
+      - name: List vendor files
+        run: ls -R vendor
+
+      - name: Debug autoload_psr4.php
+        run: cat vendor/composer/autoload_psr4.php
+
+      - name: Print FileReader.php
+        run: cat src/Core/FileReader.php
+
+      - name: Check autoload
+        run: |
+          php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\FileReader();"
+
+      - name: Run tests
+        run: vendor/bin/phpunit --configuration phpunit.xml.dist
