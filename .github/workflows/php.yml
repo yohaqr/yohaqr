@@ -3,40 +3,27 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        php-versions: ['8.2', '8.3', '8.4']
+        phpunit-versions: ['latest']
+        include:
+          - operating-system: 'ubuntu-latest'
+            php-versions: '8.1'
+            phpunit-versions: 10
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extensions: mbstring, intl
+        ini-values: post_max_size=256M, max_execution_time=180
+        coverage: xdebug
+        tools: php-cs-fixer, phpunit:${{ matrix.phpunit-versions }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Clear Composer Cache
-        run: composer clear-cache
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      - name: Dump autoload
-        run: composer dump-autoload -o
-
-      - name: List src directory
-        run: ls -R src
-
-      - name: List all files and directories
-        run: ls -R
-
-      - name: List vendor files
-        run: ls -R vendor
-
-      - name: Debug autoload_psr4.php
-        run: cat vendor/composer/autoload_psr4.php
-
-      - name: Print FileReader.php
-        run: cat src/Core/FileReader.php
-
-      - name: Check autoload
-        run: |
-          php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\FileReader();"
-
-      - name: Run tests
-        run: composer test
+        
