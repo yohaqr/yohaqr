@@ -45,4 +45,4 @@ jobs:
           php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\FileReader();"
 
       - name: Run tests
-        run: vendor/bin/phpunit --configuration phpunit.xml
+        run: composer test
