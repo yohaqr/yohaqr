@@ -36,5 +36,15 @@
             "homepage": "http://yohacodes.pro.et",
             "role": "Developer"
         }
-    ]
+    ],
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/yohatecttop"
+        }
+    ],
+    "suggest": {
+        "ext-imagick": "For high-quality image processing and generation.",
+        "ext-gd": "Alternative lightweight image processing extension."
+    }
 }
