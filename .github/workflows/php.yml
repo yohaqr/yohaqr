@@ -1,42 +1,39 @@
-name: PHP Composer
+name: CI
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-permissions:
-  contents: read
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: composer install
-    - name: Dump autoload
-      run: composer dump-autoload -o
+      - name: Install Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:2.0.8
 
-    - name: run phpstan
-      run: composer run lint
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
-      
+      - name: Dump autoload
+        run: composer dump-autoload -o
 
-    - name: List files
-      run: ls -R
+      - name: List files
+        run: ls -R
 
-    - name: List src/Core files
-      run: ls -R 
+      - name: List vendor files
+        run: ls -R vendor
 
-    - name: List vendor files
-      run: ls -R vendor
-    
-    # - name: Run tests
-    #   run: vendor/bin/phpunit --configuration  phpunit.xml
-      
-    
+      - name: Print environment variables
+        run: printenv
+
+      - name: Check autoload
+        run: |
+          php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\FileReader();"
+
+      - name: Run tests
+        run: vendor/bin/phpunit --configuration phpunit.xml
