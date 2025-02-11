@@ -16,7 +16,7 @@ jobs:
       - name: Dump autoload
         run: composer dump-autoload -o
 
-      - name: List src/Core files
+      - name: List src/Core files ipdate
         run: ls -R src/Core
 
       - name: List vendor files
