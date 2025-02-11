@@ -23,11 +23,6 @@ jobs:
     # - name: Cache Composer packages
     #   id: composer-cache
     #   uses: actions/cache@v3
-    #   with:
-    #     path: vendor
-    #     key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-php-
 
     - name: Install dependencies
       run: composer install
