@@ -10,8 +10,17 @@ use Yoha\Qr\Core\FileReader;
  */
 class DummyResult
 {
-    public function getMimeType() {}
-    public function getDataUri() {}
+    public function getMimeType(): string
+    {
+        // Return the mime type of the result
+        return 'image/png'; // Example, this should be overridden in mock
+    }
+
+    public function getDataUri(): string
+    {
+        // Return the data URI of the result
+        return ''; // Example, this should be overridden in mock
+    }
 }
 
 class FileReaderTest extends TestCase
@@ -33,9 +42,11 @@ class FileReaderTest extends TestCase
         return $result;
     }
 
+    /**
+     * Test PNG file handling.
+     */
     public function testReadPng(): void
     {
-        // For PNG, we assume getDataUri() returns a complete Data URI.
         $mimeType = 'image/png';
         $dataUri  = 'data:image/png;base64,base64EncodedData';
         $result   = $this->createResultStub($mimeType, $dataUri);
@@ -43,11 +54,13 @@ class FileReaderTest extends TestCase
         $fileReader = new FileReader();
         $output     = $fileReader->readFile($result);
 
-        // Expect the output to simply wrap the full data URI in an <img> tag.
         $expected = '<img src="' . $dataUri . '" alt="PNG Image" />';
         $this->assertEquals($expected, $output);
     }
 
+    /**
+     * Test WebP file handling.
+     */
     public function testReadWebp(): void
     {
         // For WebP, assume getDataUri() returns the full WebP data URI.
@@ -58,15 +71,17 @@ class FileReaderTest extends TestCase
         $fileReader = new FileReader();
         $output     = $fileReader->readFile($result);
 
-        // Expect the output to include the complete data URI in the <img> tag.
-        $expected = '<img src="' . $dataUri . '" alt="WebP Image">';
+        // Expect the output to include the complete data URI in the <img> tag, with a self-closing tag.
+        $expected = '<img src="' . $dataUri . '" alt="WebP Image" />';
         $this->assertEquals($expected, $output);
     }
 
 
+    /**
+     * Test SVG file handling.
+     */
     public function testReadSvg(): void
     {
-        // For SVG, assume getDataUri() returns the full SVG data URI.
         $mimeType = 'image/svg+xml';
         $dataUri  = 'data:image/svg+xml;base64,svgData';
         $result   = $this->createResultStub($mimeType, $dataUri);
@@ -78,9 +93,11 @@ class FileReaderTest extends TestCase
         $this->assertEquals($expected, $output);
     }
 
+    /**
+     * Test PDF file handling.
+     */
     public function testReadPdf(): void
     {
-        // For PDF, assume getDataUri() returns the full PDF data URI.
         $mimeType = 'application/pdf';
         $dataUri  = 'data:application/pdf;base64,pdfData';
         $result   = $this->createResultStub($mimeType, $dataUri);
@@ -92,11 +109,44 @@ class FileReaderTest extends TestCase
         $this->assertEquals($expected, $output);
     }
 
+    /**
+     * Test unsupported file type handling.
+     */
     public function testUnsupportedFileType(): void
     {
-        // For an unsupported MIME type, expect the output to be 'Unsupported file type.'
         $mimeType = 'application/octet-stream';
         $dataUri  = 'data:application/octet-stream;base64,unknownData';
+        $result   = $this->createResultStub($mimeType, $dataUri);
+
+        $fileReader = new FileReader();
+        $output     = $fileReader->readFile($result);
+
+        $this->assertEquals('Unsupported file type.', $output);
+    }
+
+    /**
+     * Test when Data URI is empty or invalid.
+     */
+    public function testEmptyDataUri(): void
+    {
+        $mimeType = 'image/png';
+        $dataUri  = ''; // Empty Data URI
+        $result   = $this->createResultStub($mimeType, $dataUri);
+
+        $fileReader = new FileReader();
+        $output     = $fileReader->readFile($result);
+
+        $this->assertEquals('Invalid file data.', $output); // The expected output
+    }
+
+
+    /**
+     * Test when MimeType is invalid.
+     */
+    public function testInvalidMimeType(): void
+    {
+        $mimeType = 'unknown/mime';
+        $dataUri  = 'data:unknown/mime;base64,invalidData';
         $result   = $this->createResultStub($mimeType, $dataUri);
 
         $fileReader = new FileReader();

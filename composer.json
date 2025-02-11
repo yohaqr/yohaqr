@@ -4,7 +4,7 @@
     "type": "library",
     "minimum-stability": "stable",
     "scripts": {
-        "test": "vendor/bin/phpunit",
+        "test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests",
         "lint": "phpstan analyse app --level=max"
     },
     "require": {
@@ -24,7 +24,9 @@
             "Yoha\\Qr\\": "app/",
             "Test\\": "tests/"
         },
-        "files": ["app/functions/app.php"]
+        "files": [
+            "app/functions/app.php"
+        ]
     },
     "authors": [
         {

@@ -9,6 +9,7 @@ use Endroid\QrCode\Label\LabelAlignment;
 use App\Exceptions\QrCodeBuilderException;
 use Endroid\QrCode\Label\Font\FontInterface;
 use Endroid\QrCode\Writer\Result\ResultInterface;
+use Yoha\Qr\Exceptions\QrCodeBuilderException as QCE;
 
 /**
 * Interface QrCodeBuilderInterface
@@ -29,7 +30,7 @@ interface QrCodeBuilderInterface
     /**
     * Set the character encoding.
     *
-    * @param Encoding $encoding The encoding ( e.g., UTF-8 ).
+    * @param string $encoding The encoding ( e.g., UTF-8 ).
     * @return self
     */
 
@@ -136,7 +137,7 @@ interface QrCodeBuilderInterface
      * Build and generate the QR code.
      *
      * @return ResultInterface The generated QR code result.
-     * @throws QrCodeBuilderException If required properties are missing or build fails.
+     * @throws QCE If required properties are missing or build fails.
      */
     public function generate(): ResultInterface;
 }

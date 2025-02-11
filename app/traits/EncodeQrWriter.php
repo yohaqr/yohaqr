@@ -7,20 +7,18 @@ use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Writer\SvgWriter;
 use Endroid\QrCode\Writer\WebPWriter;
 
-
-
 trait EncodeQrWriter
 {
     /**
      * Returns a writer instance based on the provided type.
      * 
-     * @param string $type QR Code format type (png, jpg, svg, webp, pdf)
-     * @return array Associative array with 'writer' and 'options'
+     * @param string|null $type QR Code format type (png, jpg, svg, webp, pdf)
+     * @return array<string, mixed> Associative array with 'writer' and 'options'
      * @throws \InvalidArgumentException If an unsupported type is provided
      */
-    public function writer_type(string $type = 'png'): array
+    public function writer_type(?string $type = 'png'): array
     {
-        return match (strtolower($type)) {
+        return match (strtolower($type ?: 'png')) {
             'png'  => $this->pngWrite(),
             'svg'  => $this->svgWriter(),
             'webp' => $this->webpWriter(),
@@ -32,7 +30,7 @@ trait EncodeQrWriter
     /**
      * PNG Writer Configuration
      * 
-     * @return array
+     * @return array<string, mixed>
      */
     private function pngWrite(): array
     {
@@ -42,11 +40,10 @@ trait EncodeQrWriter
         ];
     }
 
-
     /**
      * SVG Writer Configuration
      * 
-     * @return array
+     * @return array<string, mixed>
      */
     private function svgWriter(): array
     {
@@ -65,7 +62,7 @@ trait EncodeQrWriter
     /**
      * WebP Writer Configuration
      * 
-     * @return array
+     * @return array<string, mixed>
      */
     private function webpWriter(): array
     {
@@ -76,9 +73,11 @@ trait EncodeQrWriter
     }
 
     /**
- * @return iterable<string|PdfWriter>
- */
-    private function pdfWriter(): iterable
+     * PDF Writer Configuration
+     * 
+     * @return array<string, mixed>
+     */
+    private function pdfWriter(): array
     {
         return [
             'writer' => new PdfWriter(),
@@ -90,6 +89,4 @@ trait EncodeQrWriter
             ]
         ];
     }
-
 }
-

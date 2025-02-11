@@ -1,6 +1,7 @@
 <?php
 
 use Yoha\Qr\Core\QrBuilder;
+use Endroid\QrCode\Writer\Result\ResultInterface;
 
 
 
@@ -14,7 +15,7 @@ if (!function_exists("_qr"))
         string $writerType = 'png',
         string $logoPath = '',
         string $label = 'Test'
-    )
+    ): ResultInterface
     {
         $qrCode = new QrBuilder();
 
