@@ -1,5 +1,12 @@
 <?php
 
+// Security Headers 
+header("X-Content-Type-Options: nosniff");
+header("X-Frame-Options: DENY");
+header("X-XSS-Protection: 1; mode=block");
+header("Content-Security-Policy: default-src 'self';");
+
+
 use Yoha\Qr\Core\QrBuilder;
 use Yoha\Qr\Bootstrap\ErrorHandler;
 require __DIR__ . '/../vendor/autoload.php';
