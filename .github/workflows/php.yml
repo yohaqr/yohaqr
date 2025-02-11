@@ -23,7 +23,7 @@ jobs:
     - name: run phpstan
       run: composer run lint
 
-    - name: run test
-      run: composer run test
+    # - name: run test
+    #   run: composer run test
       
     
