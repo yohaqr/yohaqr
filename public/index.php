@@ -1,10 +1,10 @@
 <?php
 
 // Security Headers 
-header("X-Content-Type-Options: nosniff");
-header("X-Frame-Options: DENY");
-header("X-XSS-Protection: 1; mode=block");
-header("Content-Security-Policy: default-src 'self';");
+// header("X-Content-Type-Options: nosniff");
+// header("X-Frame-Options: DENY");
+// header("X-XSS-Protection: 1; mode=block");
+// header("Content-Security-Policy: default-src 'self';");
 
 
 use Yoha\Qr\Core\QrBuilder;
@@ -12,7 +12,7 @@ use Yoha\Qr\Bootstrap\ErrorHandler;
 require __DIR__ . '/../vendor/autoload.php';
 
 // Initialize the error handler
-new ErrorHandler();
+new ErrorHandler(true);
 
 // Example: Trigger an error (will be caught and displayed)
 // echo $undefined_variable;
@@ -26,13 +26,14 @@ new ErrorHandler();
 
 $ts = new QrBuilder();
 
-$tss = $ts->setMargin(2)
-    ->setWriterType('svg')
+$tss = $ts
+    ->setWriterType('pngd')
     ->setData('Testing SaveFile')
     ->saveToFile(name: 'testing_pdf', path: __DIR__.'/../storage/files/');
     
 // $fileMG = new FileReader();
 
+// dd($tss->getDataUri());
 
 // $result = $tss->getDataUri();
 
@@ -76,9 +77,9 @@ $tss = $ts->setMargin(2)
         // $fileType = explode('/', $mimeType)[1] ?? '';
 
         // if (in_array($fileType, ['png', 'jpg', 'jpeg', 'webp'])) {
-        //     echo '<img src="data:' . $mimeType . ';' . $result . '" alt="Base64 Image">';
+            // echo '<img src="'. $tss . '" alt="Base64 Image">';
         // } elseif ($fileType === 'svg+xml') { // SVG MIME type is 'image/svg+xml'
-        //     echo '<object type="image/svg+xml" data="data:image/svg+xml;' . $result . '" width="300" height="300"></object>';
+            // echo '<object type="image/svg+xml" data="' . $tss->getDataUri() . '" width="300" height="300"></object>';
         // } elseif ($fileType === 'pdf') {
         //     echo '<embed src="data:application/pdf;' . $result . '" type="application/pdf" width="600" height="800">';
         // } else {

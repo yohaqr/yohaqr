@@ -84,9 +84,7 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
     /** @var string Writer type; we require a non-null string */
     protected string $writertype = '';
 
-    public function __construct(
-        public string $getData = ''
-    )
+    public function __construct()
     {
         // Default Encoder
         $this->encoding = new Encoding('UTF-8');
@@ -139,8 +137,6 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
         return $this;
     }
 
-
-
     /**
      * Sets writer options based on the writer type.
      *
@@ -169,97 +165,158 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
         return $this;
     }
 
-
-    // private function setWriterOption(): static
-    // {
-    //     $wo = match($this->writertype) {
-    //         'png'  => $this->writer_type($this->writertype)['options'],
-    //         'svg'  => $this->writer_type($this->writertype)['options'],
-    //         'webp' => $this->writer_type($this->writertype)['options'],
-    //         'pdf'  => $this->writer_type($this->writertype)['options'],
-    //         default => []
-    //     };
-    //     $this->writerOptions = $wo;
-    //     return $this;
-    // }
-
-    public function setData(string $data = "test QR"): self
+    /**
+     * Set the content to encode in the QR code.
+     *
+     * @param string $data
+     * @return self
+     */
+    public function setData(string $data = "Test Data"): self
     {
-    
-        $this->data = empty($this->getData) ? $data : $this->getData;
-        $this->generate();
-    
+        $this->data = $data;
+        return $this; // Return $this for method chaining
+    }
+
+    /**
+     * Sets the character encoding.
+     *
+     * @param string|null $encoding
+     * @return self
+     */
+    public function setEncoding(?string $encoding): self
+    {
+        // Ensure a non-null encoding value.
+        $this->encoding = new Encoding($encoding ?? 'UTF-8');
         return $this;
     }
 
-    public function setEncoding($encoding): self
-    {
-        $encoding = 'UTF-8';
-        $this->encoding = new Encoding($encoding);
-        return $this;
-    }
-
+    /**
+     * Sets the error correction level.
+     *
+     * @param ErrorCorrectionLevel $errorCorrectionLevel
+     * @return self
+     */
     public function setErrorCorrectionLevel(ErrorCorrectionLevel $errorCorrectionLevel): self
     {
         $this->errorCorrectionLevel = $errorCorrectionLevel;
         return $this;
     }
 
+    /**
+     * Sets the QR code size in pixels.
+     *
+     * @param int $size
+     * @return self
+     */
     public function setSize(int $size): self
     {
         $this->size = $size;
         return $this;
     }
 
+    /**
+     * Sets the margin in pixels.
+     *
+     * @param int $margin
+     * @return self
+     */
     public function setMargin(int $margin): self
     {
         $this->margin = $margin;
         return $this;
     }
 
+    /**
+     * Sets the round block size mode.
+     *
+     * @param RoundBlockSizeMode $roundBlockSizeMode
+     * @return self
+     */
     public function setRoundBlockSizeMode(RoundBlockSizeMode $roundBlockSizeMode): self
     {
         $this->roundBlockSizeMode = $roundBlockSizeMode;
         return $this;
     }
 
+    /**
+     * Sets the logo path.
+     *
+     * @param string|null $logoPath
+     * @return self
+     */
     public function setLogoPath(?string $logoPath): self
     {
         $this->logoPath = $logoPath;
         return $this;
     }
 
+    /**
+     * Sets the logo resize width.
+     *
+     * @param int|null $logoResizeToWidth
+     * @return self
+     */
     public function setLogoResizeToWidth(?int $logoResizeToWidth): self
     {
         $this->logoResizeToWidth = $logoResizeToWidth;
         return $this;
     }
 
+    /**
+     * Sets the logo resize height.
+     *
+     * @param int|null $logoResizeToHeight
+     * @return self
+     */
     public function setLogoResizeToHeight(?int $logoResizeToHeight): self
     {
         $this->logoResizeToHeight = $logoResizeToHeight;
         return $this;
     }
 
+    /**
+     * Sets whether to punch out the logo background.
+     *
+     * @param bool $logoPunchoutBackground
+     * @return self
+     */
     public function setLogoPunchoutBackground(bool $logoPunchoutBackground): self
     {
         $this->logoPunchoutBackground = $logoPunchoutBackground;
         return $this;
     }
 
+    /**
+     * Sets the label text.
+     *
+     * @param string|null $labelText
+     * @return self
+     */
     public function setLabelText(?string $labelText = ''): self
     {
         $this->labelText = $labelText;
         return $this;
     }
 
-    public function setLabelFont($labelFont): self
+    /**
+     * Sets the label font.
+     *
+     * @param FontInterface $labelFont
+     * @return self
+     */
+    public function setLabelFont(?FontInterface $labelFont): self
     {
         $this->labelFont = $labelFont;
         return $this;
     }
 
-    public function setLabelAlignment($labelAlignment): self
+    /**
+     * Sets the label alignment.
+     *
+     * @param LabelAlignment $labelAlignment
+     * @return self
+     */
+    public function setLabelAlignment(?LabelAlignment $labelAlignment): self
     {
         $this->labelAlignment = $labelAlignment;
         return $this;
@@ -347,16 +404,15 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
      *
      * @param string $name The name of the file (without extension).
      * @param string $path The directory path where the file should be saved.
-     * @return mixed The generated QR code result object.
+     * @return ResultInterface The generated QR code result.
      * @throws InvalidArgumentException If parameters are invalid.
      * @throws RuntimeException If saving the file fails.
      */
-    public function saveToFile(
-        string $name = 'test',
-        string $path = ''
-    ) {
-        if (!preg_match('/^[a-zA-Z0-9_-]+$/', $name)) {
-            throw new InvalidArgumentException("Invalid filename: $name. Use only letters, numbers, hyphens, or underscores.");
+    public function saveToFile(string $name = 'test', string $path = ''): ResultInterface
+    {
+        // Updated regex: place the hyphen at the beginning of the character class.
+        if (!preg_match('/^[-a-zA-Z0-9 _]+$/', $name)) {
+            throw new InvalidArgumentException("Invalid filename: $name. Use only letters, numbers, hyphens, underscores, or spaces.");
         }
 
         if (!empty($path) && !is_dir($path)) {
@@ -369,7 +425,7 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
         try {
             $result->saveToFile($ab_path);
         } catch (Exception $e) {
-            throw new RuntimeException("Failed to save QR code to file: " . $e->getMessage());
+            throw new RuntimeException('Failed to save QR code to file: ' . $e->getMessage());
         }
 
         return $result;

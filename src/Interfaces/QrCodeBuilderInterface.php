@@ -18,23 +18,24 @@ use Yoha\Qr\Exceptions\QrCodeBuilderException as QCE;
 */
 interface QrCodeBuilderInterface
  {
-    /**
-    * Set the content to encode in the QR code.
-    *
-    * @param string $data The text or URL to encode.
-    * @return self
-    */
+/**
+     * Set the content to encode in the QR code.
+     *
+     * @param string $data The text or URL to encode.
+     * @return self
+     * 
+     */
+    public function setData(string $data): self;
 
-    public function setData( string $data ): self;
 
     /**
     * Set the character encoding.
     *
-    * @param string $encoding The encoding ( e.g., UTF-8 ).
+    * @param ?string $encoding The encoding ( e.g., UTF-8 ).
     * @return self
     */
 
-    public function setEncoding( $encoding ): self;
+    public function setEncoding(?string $encoding ): self;
 
     /**
     * Set the error correction level.
@@ -115,7 +116,7 @@ interface QrCodeBuilderInterface
     * @return self
     */
 
-    public function setLabelFont( $labelFont ): self;
+    public function setLabelFont( ?FontInterface $labelFont ): self;
 
     /**
     * Optionally set the label alignment.
