@@ -185,15 +185,10 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
 
     public function setData(string $data = "test QR"): self
     {
-        if (empty($this->getData)) 
-        {
-            $this->data = $this->getData;
-            $this->generate();
-        }
-        else {
-
-            $this->data = $data;
-        }
+    
+        $this->data = empty($this->getData) ? $data : $this->getData;
+        $this->generate();
+    
         return $this;
     }
 
