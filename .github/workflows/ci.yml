@@ -31,6 +31,9 @@ jobs:
       - name: List all files and directories
         run: ls -lR
 
+      - name: List vendor files
+        run: ls -lR vendor
+
       - name: Debug autoload_psr4.php
         run: cat vendor/composer/autoload_psr4.php
 
