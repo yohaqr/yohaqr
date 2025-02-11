@@ -156,6 +156,21 @@ $result = $qrBuilder->setMargin(2)
 echo $qrBuilder->readFile($result);
 ```
 
+# Easy example
+```php
+<?php
+
+    $qr = new QrBuilder();
+    $return = $qr->setData('data')
+                 ->generate();
+
+    echo "<img src='. $return->getDataUri() .'  alt='Scan Me' />";
+
+
+?>
+
+```
+
 ## Logo Integration
 
 The logo feature in YohaQR allows you to easily add a custom logo to your QR code. Just provide the logo’s file path with `setLogoPath()`. You can also:
