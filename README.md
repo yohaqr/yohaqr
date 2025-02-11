@@ -206,4 +206,4 @@ Contributions are welcome! If you find any bugs or have suggestions for improvem
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Security
-If you discover any security vulnerabilities, please report them via email at security@example.com instead of opening a GitHub issue.
+If you discover any security vulnerabilities, please report them via email at johnpro3269@gmail.com instead of opening a GitHub issue.
