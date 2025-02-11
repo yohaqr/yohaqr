@@ -10,12 +10,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Composer
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          tools: composer:2.0.8
-
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
@@ -24,6 +18,9 @@ jobs:
 
       - name: List files
         run: ls -R
+
+      - name: List src files
+        run: ls -R src
 
       - name: List vendor files
         run: ls -R vendor
