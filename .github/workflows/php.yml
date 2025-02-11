@@ -19,6 +19,8 @@ jobs:
 
     - name: Install dependencies
       run: composer install
+    - name: Dump autoload
+      run: composer dump-autoload -o
 
     - name: run phpstan
       run: composer run lint
