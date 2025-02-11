@@ -85,7 +85,7 @@ $tss = $ts->setMargin(2)
         //     echo 'Unsupported file type.';
         // }
     ?>
-    <h1> this is just tet page. </h1>
+    <h1> This is just tet page. </h1>
 
 
 </body>
