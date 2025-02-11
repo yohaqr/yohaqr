@@ -27,7 +27,7 @@ new ErrorHandler();
 $ts = new QrBuilder();
 
 $tss = $ts->setMargin(2)
-    ->setWriterType('png')
+    ->setWriterType('svg')
     ->setData('Testing SaveFile')
     ->saveToFile(name: 'testing_pdf', path: __DIR__.'/../storage/files/');
     
