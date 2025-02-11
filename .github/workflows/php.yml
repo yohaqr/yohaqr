@@ -23,6 +23,14 @@ jobs:
     - name: run phpstan
       run: composer run lint
 
+      
+
+    - name: List files
+      run: ls -R
+
+    - name: List src/Core files
+      run: ls -R 
+
     - name: Run tests
       run: vendor/bin/phpunit --configuration  phpunit.xml
       
