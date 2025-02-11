@@ -3,7 +3,7 @@
 
 namespace Tests;
 
-require __DIR__ ."/../vendor/autoload.php";
+// require __DIR__ ."/../vendor/autoload.php";
 
 use Yoha\Qr\Core\QrBuilder;
 use PHPUnit\Framework\TestCase;
