@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CLI Arguments" tests="9" assertions="12" errors="0" failures="0" skipped="0" time="0.000000">
+    <testsuite name="Yoha\Qr\Tests\FileReaderTest" file="Z:\MyPackages\QR\tests\FileReaderTest.php" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="0.000000">
+      <testcase name="testReadPng" file="Z:\MyPackages\QR\tests\FileReaderTest.php" line="49" class="Yoha\Qr\Tests\FileReaderTest" classname="Yoha.Qr.Tests.FileReaderTest" assertions="1" time="0.020231"/>
+      <testcase name="testReadWebp" file="Z:\MyPackages\QR\tests\FileReaderTest.php" line="65" class="Yoha\Qr\Tests\FileReaderTest" classname="Yoha.Qr.Tests.FileReaderTest" assertions="1" time="0.000328"/>
+      <testcase name="testReadSvg" file="Z:\MyPackages\QR\tests\FileReaderTest.php" line="84" class="Yoha\Qr\Tests\FileReaderTest" classname="Yoha.Qr.Tests.FileReaderTest" assertions="1" time="0.000263"/>
+      <testcase name="testReadPdf" file="Z:\MyPackages\QR\tests\FileReaderTest.php" line="100" class="Yoha\Qr\Tests\FileReaderTest" classname="Yoha.Qr.Tests.FileReaderTest" assertions="1" time="0.000260"/>
+      <testcase name="testUnsupportedFileType" file="Z:\MyPackages\QR\tests\FileReaderTest.php" line="116" class="Yoha\Qr\Tests\FileReaderTest" classname="Yoha.Qr.Tests.FileReaderTest" assertions="1" time="0.000266"/>
+      <testcase name="testEmptyDataUri" file="Z:\MyPackages\QR\tests\FileReaderTest.php" line="131" class="Yoha\Qr\Tests\FileReaderTest" classname="Yoha.Qr.Tests.FileReaderTest" assertions="1" time="0.000263"/>
+      <testcase name="testInvalidMimeType" file="Z:\MyPackages\QR\tests\FileReaderTest.php" line="147" class="Yoha\Qr\Tests\FileReaderTest" classname="Yoha.Qr.Tests.FileReaderTest" assertions="1" time="0.000264"/>
+    </testsuite>
+    <testsuite name="Yoha\Qr\Tests\QrCodeBuilderTest" file="Z:\MyPackages\QR\tests\QrCodeBuilderTest.php" tests="2" assertions="5" errors="0" failures="0" skipped="0" time="0.000000">
+      <testcase name="testGenerateReturnsResultInstance" file="Z:\MyPackages\QR\tests\QrCodeBuilderTest.php" line="34" class="Yoha\Qr\Tests\QrCodeBuilderTest" classname="Yoha.Qr.Tests.QrCodeBuilderTest" assertions="3" time="0.049469"/>
+      <testcase name="testGenerateWithoutDataThrowsException" file="Z:\MyPackages\QR\tests\QrCodeBuilderTest.php" line="66" class="Yoha\Qr\Tests\QrCodeBuilderTest" classname="Yoha.Qr.Tests.QrCodeBuilderTest" assertions="2" time="0.002452"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
