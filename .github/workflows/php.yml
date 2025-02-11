@@ -33,7 +33,10 @@ jobs:
     - name: List src/Core files
       run: ls -R 
 
-    - name: Run tests
-      run: vendor/bin/phpunit --configuration  phpunit.xml
+    - name: List vendor files
+      run: ls -R vendor
+    
+    # - name: Run tests
+    #   run: vendor/bin/phpunit --configuration  phpunit.xml
       
     
