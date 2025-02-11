@@ -16,17 +16,16 @@ jobs:
       - name: Dump autoload
         run: composer dump-autoload -o
 
-      - name: List files
-        run: ls -R
-
-      - name: List src files
-        run: ls -R src
+      - name: List src/Core files
+        run: ls -R src/Core
 
       - name: List vendor files
         run: ls -R vendor
 
-      - name: Print environment variables
-        run: printenv
+      - name: Debug autoload files
+        run: |
+          cat vendor/composer/autoload_classmap.php
+          cat vendor/composer/autoload_psr4.php
 
       - name: Check autoload
         run: |
