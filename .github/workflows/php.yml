@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install 
+          composer install --no-progress --no-interaction
 
       - name: Regenerate autoload files
         run: composer dump-autoload
