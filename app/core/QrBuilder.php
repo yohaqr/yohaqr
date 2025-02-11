@@ -381,53 +381,7 @@ class QrBuilder extends FileReader implements QrCodeBuilderInterface
     }
 
 
-    // Getting in supported file Types 
-
-    /**
-     * 
-     */
-    // public function readPng()
-    // {
-    //     /** */
-    //     $result = $this->generate();
-    //     // Assume $result contains the base64-encoded data
-    //     $mimeType = $result->getMimeType(); // Example: Fetch MIME type dynamically
-
-    //     $src = $result->getDataUri();
-    //     // Extract the file type from MIME type (e.g., 'image/png' -> 'png')
-    //     $fileType = explode('/', $mimeType)[1] ?? '';
-        
-    //     return '<img src="data:' . $mimeType . ';' . $src . '" alt="Base64 Image">';
-
-    // }
-
-
-    // /**
-    //  * 
-    //  */
-    // public function readWebp()
-    // {
-
-    // }
-
-
-    // /**
-    //  * 
-    //  */
-    // public function readSvg()
-    // {
-
-    // }
-
-
-    // /**
-    //  * 
-    //  */
-    // public function readPdf()
-    // {
-
-    // }
-
+    
 
 
 }

@@ -27,9 +27,9 @@ $tss = $ts->setMargin(2)
 // $fileMG = new FileReader();
 
 
-$result = $tss->getDataUri();
+// $result = $tss->getDataUri();
 
-dd($result);
+// dd($result);
 // Directly output the QR code
 // header('Content-Type: '.$result->getMimeType());
 // $r = $result->getString();

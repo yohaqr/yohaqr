@@ -76,11 +76,9 @@ trait EncodeQrWriter
     }
 
     /**
-     * PDF Writer Configuration
-     * 
-     * @return array
-     */
-    private function pdfWriter(): array
+ * @return iterable<string|PdfWriter>
+ */
+    private function pdfWriter(): iterable
     {
         return [
             'writer' => new PdfWriter(),

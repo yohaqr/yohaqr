@@ -1,6 +1,7 @@
 <?php
 
-use App\Core\QrBuilder;
+use Yoha\Qr\Core\QrBuilder;
+
 
 
 /**
