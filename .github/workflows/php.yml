@@ -31,9 +31,12 @@ jobs:
       - name: Debug autoload_psr4.php
         run: cat vendor/composer/autoload_psr4.php
 
+      - name: Print FileReader.php
+        run: cat src/Core/FileReader.php
+
       - name: Check autoload
         run: |
           php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\FileReader();"
 
       - name: Run tests
-        run: vendor/bin/phpunit --configuration phpunit.xml
+        run: composer test

@@ -23,7 +23,7 @@
     "autoload": {
         "psr-4": {
             "Yoha\\Qr\\": "src/",
-            "Test\\": "tests/"
+            "Yoha\\Qr\\Tests\\": "tests/"
         },
         "files": [
             "src/functions/app.php"
