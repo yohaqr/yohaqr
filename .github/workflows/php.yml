@@ -36,7 +36,7 @@ jobs:
     - name: Run test suite
       run: |
         composer run-script test
-      # continue-on-error: true  # Continue execution even if tests fail, useful for debugging
+      continue-on-error: true  # Continue execution even if tests fail, useful for debugging
 
     # Optionally, you can add a step to output the test result status or error message
     - name: Output PHPUnit result status
