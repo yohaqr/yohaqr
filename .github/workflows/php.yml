@@ -25,8 +25,8 @@ jobs:
       - name: List vendor files
         run: ls -R vendor
 
-      - name: Print environment variables
-        run: printenv
+      - name: Debug autoload_psr4.php
+        run: cat vendor/composer/autoload_psr4.php
 
       - name: Check autoload
         run: |
