@@ -4,7 +4,7 @@
     "type": "library",
     "minimum-stability": "stable",
     "scripts": {
-        "test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests",
+        "test": "phpunit --bootstrap vendor/autoload.php tests",
         "lint": "phpstan analyse app --level=max"
     },
     "require": {
