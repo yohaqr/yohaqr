@@ -30,7 +30,7 @@ jobs:
 
       - name: Check autoload
         run: |
-          php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\QrBuilder();"
+          php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\FileReader();"
 
       - name: Run tests
         run: vendor/bin/phpunit --configuration phpunit.xml
