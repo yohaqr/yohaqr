@@ -1,60 +1,42 @@
-name: push Request Check
+name: CI-PHP-Unit-test
+
 on: [push]
 
 jobs:
-  unit-test:
-    name: Unit testing
+  build-test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: /tmp/composer-cache
-          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
-
-      - name: Installing dependencies
-        uses: php-actions/composer@v6
-        with:
-          php_version: 8.1
-          php_extensions: "json zip sodium pcntl bcmath"
-
-      - name: Running unit test
-        uses: php-actions/phpunit@v3
-        with:
-          version: 9.6
-          php_version: 8.1
-          php_extensions: "json zip sodium pcntl bcmath"
-          args: "-d date.timezone=Asia/Jakarta"
-          memory_limit: 300M
-          configuration: phpunit.xml
-          testsuite: unittest
-
-  psalm-test:
-    name: Checking psalm
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
+      
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, lz4-kjdev/php-ext-lz4@0.4.3
-          coverage: none
+          php-version: '8.3'
+          extensions: gd
+          
+      - name: Set safe directory
+        run: git config --global --add safe.directory /app
 
-      - name: Cache composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: composer-${{ hashFiles('composer.lock') }}
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run composer install
-        run: composer install -n --prefer-dist
+      - name: Dump autoload
+        run: composer dump-autoload -o
 
-      - name: Run psalm
-        run: ./vendor/bin/psalm.phar --output-format=github
+      - name: List src directory with details
+        run: ls -lR src
 
+      - name: List all files and directories
+        run: ls -lR
+
+      - name: Debug autoload_psr4.php
+        run: cat vendor/composer/autoload_psr4.php
+
+      - name: Check autoload
+        run: |
+          php -r "require 'vendor/autoload.php'; new Yoha\Qr\Core\FileReader();"
+
+      - name: Run tests
+        run: composer test
