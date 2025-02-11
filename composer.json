@@ -21,11 +21,11 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Yoha\\Qr\\": "app/",
+            "Yoha\\Qr\\": "src/",
             "Test\\": "tests/"
         },
         "files": [
-            "app/functions/app.php"
+            "src/functions/app.php"
         ]
     },
     "authors": [
