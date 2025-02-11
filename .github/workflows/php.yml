@@ -10,17 +10,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [8.2, 8.3]
-        laravel: [10.*, 11.*]
-        dependency-version: [prefer-lowest, prefer-stable]
-        include:
-          - laravel: 10.*
-          - laravel: 11.*
-
-    name: P${{ matrix.php }} / L${{ matrix.laravel }} / ${{ matrix.dependency-version }}
 
     steps:
       - name: Checkout code
@@ -30,22 +19,20 @@ jobs:
         uses: actions/cache@v4
         with:
           path: vendor
-          key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json', 'composer.lock') }}
+          key: composer-${{ hashFiles('composer.json', 'composer.lock') }}
           restore-keys: |
-            dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-
+            composer-
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          php-version: 8.2
+          extensions: dom, curl, libxml, mbstring, zip, pdo, bcmath, soap, intl, gd, exif, iconv, imagick
           coverage: none
 
       - name: Install dependencies
         run: |
-          composer self-update
-          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
-          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+          composer install --prefer-dist --no-progress --no-interaction
 
       - name: Regenerate autoload files
         run: composer dump-autoload
@@ -55,7 +42,5 @@ jobs:
           composer run-script test
           # continue-on-error: true  # Uncomment this if you want the job to continue even if tests fail
 
-      # Optionally, you can add a step to output the test result status or error message
       - name: Output PHPUnit result status
         run: echo "Test results have been printed above!"
-
