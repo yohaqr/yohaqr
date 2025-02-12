@@ -11,9 +11,8 @@ We provide security updates for the following versions:
 ## Reporting a Vulnerability
 If you discover a security vulnerability, please report it responsibly.
 
-1. Do **not** disclose security issues publicly.
-2. Send an email to **johnpro3269@gmail.com** with details.
-3. We will respond within **48 hours** and work on a fix.
+1. Send an email to **johnpro3269@gmail.com** with details.
+1. We will respond within **48 hours** and work on a fix.
 
 ## Best Practices
 - Always keep your package updated.
