@@ -197,6 +197,19 @@ echo '<img src="' . $result->getDataUri() . '" alt="QR Code with Logo">';
 
 ```
 
+# after installing the package for easy use you can  just call _qr("your data here') 
+## Example 
+```php
+<?php
+
+$uri = _qr('MyTestData');
+
+<img src="<?= $uri ?>" alt="alter Txt" />
+
+?>
+
+```
+
 ## Contributing
 
 Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request on [GitHub](https://github.com/yohaqr/yohaqr). For major changes, please open an issue first to discuss what you would like to change.
