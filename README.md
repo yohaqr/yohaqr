@@ -22,8 +22,6 @@ YohaQR is a powerful PHP Composer package that offers a simple, fluent API for g
 - **Labeling:** Optionally append a label with custom fonts and alignment.
 
 ## Warning
-Here is a **step-by-step installation process** for fixing the warning:
-
 > **"Install GD or Imagepk extension for PHP."**
 
 We'll install either the **GD** or **ImageMagick (imagick)** extension based on your system.
