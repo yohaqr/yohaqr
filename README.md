@@ -21,6 +21,92 @@ YohaQR is a powerful PHP Composer package that offers a simple, fluent API for g
 - **Logo Integration:** Seamlessly add a custom logo with options for resizing and background removal.
 - **Labeling:** Optionally append a label with custom fonts and alignment.
 
+## Warning
+Here is a **step-by-step installation process** for fixing the warning:
+
+> **"Install GD or Imagepk extension for PHP."**
+
+We'll install either the **GD** or **ImageMagick (imagick)** extension based on your system.
+
+---
+
+## 🖥️ 1. **On Linux (Ubuntu/Debian)**
+
+### ✅ **Install GD Extension**
+
+```bash
+sudo apt update
+sudo apt install php-gd -y
+sudo systemctl restart apache2  # or php-fpm, if you're using it
+```
+
+### ✅ **(Alternative) Install ImageMagick**
+
+```bash
+sudo apt install php-imagick -y
+sudo systemctl restart apache2
+```
+
+---
+
+## 🖥️ 2. **On Fedora / CentOS / RHEL**
+
+### ✅ **Install GD Extension**
+
+```bash
+sudo dnf install php-gd -y
+sudo systemctl restart httpd
+```
+
+### ✅ **(Alternative) Install ImageMagick**
+
+```bash
+sudo dnf install php-pecl-imagick -y
+sudo systemctl restart httpd
+```
+
+---
+
+## 🖥️ 3. **On Windows (XAMPP/WAMP)**
+
+### ✅ **Enable GD Extension in php.ini**
+
+1. Open the file: `php.ini`
+
+   * In XAMPP: located at `C:\xampp\php\php.ini`
+   * In WAMP: `C:\wamp64\bin\php\php.ini`
+
+2. Find and **uncomment** the line:
+
+   ```ini
+   ;extension=gd
+   ```
+
+   Change it to:
+
+   ```ini
+   extension=gd
+   ```
+
+3. Restart Apache via the XAMPP/WAMP control panel.
+
+---
+
+## ✅ 4. **Verify Installation**
+
+### Using terminal/command:
+
+```bash
+php -m | grep -E "gd|imagick"
+```
+
+### Or create a file `phpinfo.php`:
+
+```php
+<?php phpinfo(); ?>
+```
+
+
 ## Installation
 
 Install YohaQR via Composer:
