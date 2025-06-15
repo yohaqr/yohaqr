@@ -288,7 +288,7 @@ echo '<img src="' . $result->getDataUri() . '" alt="QR Code with Logo">';
 
 $uri = _qr('MyTestData');
 
-<img src="<?= $uri ?>" alt="alter Txt" />
+<img src="<?= $uri->getDataUri() ?>" alt="alter Txt" />
 
 ?>
 
